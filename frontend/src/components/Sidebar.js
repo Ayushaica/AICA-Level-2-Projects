@@ -17,13 +17,15 @@ import {
     LogOut,
     Settings,
     Menu,
-    X
+    X,
+    Sparkles
 } from 'lucide-react';
 
 const menuItems = [
     { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
     { path: '/suppliers', icon: Users, label: 'Suppliers' },
     { path: '/materials', icon: FlaskConical, label: 'Raw Materials' },
+    { path: '/products', icon: Sparkles, label: 'Finished Products' },
     { path: '/purchase-orders', icon: ShoppingCart, label: 'Purchase Orders' },
     { path: '/store', icon: Warehouse, label: 'Store Inventory' },
     { path: '/chemist-reports', icon: Beaker, label: 'Chemist Reports' },
