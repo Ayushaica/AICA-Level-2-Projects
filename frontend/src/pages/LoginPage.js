@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { FlaskConical, Eye, EyeOff, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
 
 const LoginPage = () => {
-    const { login, register } = useAuth();
+    const { login, register, user, loading: authLoading } = useAuth();
+    const navigate = useNavigate();
     const [isLogin, setIsLogin] = useState(true);
     const [loading, setLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
@@ -15,6 +17,13 @@ const LoginPage = () => {
         role: 'viewer'
     });
 
+    // Redirect if already logged in
+    useEffect(() => {
+        if (user && !authLoading) {
+            navigate('/dashboard', { replace: true });
+        }
+    }, [user, authLoading, navigate]);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -22,9 +31,11 @@ const LoginPage = () => {
             if (isLogin) {
                 await login(form.email, form.password);
                 toast.success('Welcome back!');
+                navigate('/dashboard', { replace: true });
             } else {
                 await register(form.name, form.email, form.password, form.role);
                 toast.success('Account created successfully!');
+                navigate('/dashboard', { replace: true });
             }
         } catch (err) {
             toast.error(err.response?.data?.detail || 'Authentication failed');
