@@ -1,0 +1,174 @@
+Imagine you are a Senior Python Developer, Build an complete Python desktop billing software named Smart Billing Manager with a proper front-end + back-end + database architecture. The application should be professional, fully functional, offline-capable, and structured in a clean, modular way suitable for future scalability.
+🏗️ Architecture Requirement (Primary Focus)
+The software must be designed with a clear separation of layers:
+1. Front-end (UI Layer)
+•	Built using PyQt 
+•	Responsible for: 
+o	User input forms 
+o	Invoice item table/grid 
+o	Buttons and actions 
+o	Invoice preview 
+o	Theme and layout 
+2. Back-end (Logic Layer)
+•	Handles: 
+o	Invoice calculations 
+o	GST computation 
+o	Validation of inputs 
+o	Invoice number generation 
+o	Business logic for save/edit/delete/search 
+o	Print and PDF workflow 
+o	Backup and restore operations 
+3. Database Layer
+•	Built using SQLite 
+•	Responsible for: 
+o	Data storage 
+o	Query execution 
+o	CRUD operations 
+🔁 Integration Rules
+•	UI must call backend functions (no direct DB logic in UI) 
+•	Backend must communicate with database via modular functions 
+•	Keep logic, UI, and database strictly separated (as much as possible within a single file constraint) 
+•	Code should be reusable, maintainable, and scalable 
+✅ Functional Requirements
+Invoice Creation
+•	Auto Invoice Number 
+•	Invoice Date 
+•	Customer Details: 
+o	Name 
+o	Address 
+o	Mobile 
+o	GST (optional) 
+Seller Details (Header Section)
+•	Trade Name 
+•	Address 
+•	GST Number 
+•	Contact details 
+•	Appears at top of invoice 
+Item Entry (Multiple Rows)
+•	Item Name 
+•	Quantity 
+•	Rate 
+•	GST % 
+•	Auto Calculation: 
+o	Amount 
+o	GST Amount 
+o	Total 
+Auto Calculations
+•	Subtotal 
+•	Total GST 
+•	Grand Total 
+•	Round Off (if required) 
+Editing Features
+•	Edit/Delete line items 
+•	Basic validation 
+💾 Database Requirements (SQLite)
+•	Auto-create database if not available 
+•	Store: 
+o	Invoice master 
+o	Customer details 
+o	Item breakdown 
+o	Tax summary 
+Features:
+•	Search invoice 
+•	Open & edit saved invoice 
+•	Delete invoice 
+•	Fully offline 
+🔄 Data Backup & Restore Requirements
+Backup Features
+•	Manual “Backup Data” button 
+•	Backup entire SQLite database 
+Backup Options:
+Type	Description
+Default Backup	Save in /backup folder
+Manual Backup	User selects custom location
+•	Use file dialog to select location 
+•	File format: .db or .sqlite 
+•	Include timestamp in filename 
+🔔 Backup Reminder on Exit (Important)
+•	On closing the application: 
+o	Prompt user with message: 
+	“Do you want to take a backup before exiting?” 
+•	Options: 
+o	Yes → Open backup dialog 
+o	No → Exit 
+o	Cancel → Stay in application 
+Restore Features
+•	“Restore Data” option 
+•	Select backup file 
+•	Replace current database safely 
+•	Confirmation before overwrite 
+•	Validate file 
+Safety Measures
+•	Auto-backup before restore 
+•	Prevent DB conflict during restore 
+•	Handle corrupt files gracefully 
+🖨️ Print & PDF Requirements
+•	Professional invoice layout 
+•	Print support 
+•	Export PDF using reportlab 
+•	PDF must match print 
+Invoice Includes:
+•	Seller header 
+•	Logo (optional) 
+•	Customer details 
+•	Item table 
+•	Tax summary 
+•	Footer: 
+o	Bank details 
+o	Declaration 
+🎨 Interface Requirements (PyQt UI)
+•	Theme: White, Blue, Red 
+•	Clean professional layout 
+Components:
+•	Item table/grid 
+•	Buttons: 
+o	New 
+o	Save 
+o	Print 
+o	Export PDF 
+o	Search 
+o	Delete 
+o	Clear 
+o	Backup Data 
+o	Restore Data 
+•	Invoice Preview 
+
+📁 File & Folder Handling
+Single File Requirement
+•	Provide entire application in ONE .py file 
+Auto-create folders (same location as .py or Exe File in case of EXE File is made in PY File. In case of set up file is made through Inno Setup with .iss Script, it should properly store the data where the software files are located)
+•	/database 
+•	/invoices_pdf 
+•	/backup 
+On First Run:
+•	Create folders 
+•	Create SQLite database 
+Storage Rules:
+•	DB → /database 
+•	PDFs → /invoices_pdf 
+•	Backups → /backup (default) 
+⚙️ Technical Requirements
+•	Python 
+•	PyQt 
+•	SQLite 
+•	ReportLab 
+Code Requirements
+•	Clean 
+•	Modular (within single file) 
+•	Maintainable 
+•	Ready for .exe conversion 
+🎯 Final Instruction
+Create a complete, working Python desktop billing application with:
+•	Proper front-end + back-end + database architecture 
+•	Delivered in a single .py file 
+•	Automatic folder & DB creation 
+•	Full invoicing features 
+•	Professional invoice design 
+•	Offline working 
+Must Include:
+•	Backup to default folder 
+•	Manual backup to user-selected location 
+•	Backup reminder before application exit 
+•	Restore functionality 
+Test the application thoroughly. If anything fails, debug and fix it before final output. Make Sure the Database Functionality works same as PY file in EXE File also. If we convert the PY File into EXE File and also it should work in a Set up file (after Installation)  if we convert the EXE File in to Set Up File.
+The final solution should behave like a real professional billing software, ready for real-world usage and future enhancements.

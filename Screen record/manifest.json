@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "SOP Maker & Screen Recorder",
+  "version": "1.0",
+  "description": "Silently records screens on click and generates PDF SOPs.",
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "scripting",
+    "storage",
+    "downloads"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "SOP Maker"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "all_frames": false
+    }
+  ]
+}
